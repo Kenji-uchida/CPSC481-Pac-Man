@@ -87,10 +87,10 @@ def depthFirstSearch(problem):
     #create working stack
     openStack = util.Stack()
 
-    #create list to track nodes
-    direct = []
+    #create list to track node
     track = []
-    openStack.push((problem.getStartState(), []))
+    direct = []
+    openStack.push((problem.getStartState(), direct))
 
     #while loop to iterate through
     while not openStack.isEmpty():
@@ -119,7 +119,8 @@ def breadthFirstSearch(problem):
 
     #create list to track nodes
     track = []
-    openQueue.push((problem.getStartState(), []))
+    direct = []
+    openQueue.push((problem.getStartState(), direct))
 
     #while loop to iterate through
     while not openQueue.isEmpty():

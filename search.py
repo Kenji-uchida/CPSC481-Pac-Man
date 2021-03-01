@@ -64,7 +64,7 @@ class SearchProblem:
 
 def tinyMazeSearch(problem):
     """
-    Returns a sequence of moves that solves tinyMaze.  For any other maze, the
+python pacman.py -l tinyMaze -p SearchAgent -a fn=tinyMazeSearch    Returns a sequence of moves that solves tinyMaze.  For any other maze, the
     sequence of moves will be incorrect, so only use this for tinyMaze.
     """
     print("In tinyMazeSearch Function")
@@ -83,68 +83,62 @@ def depthFirstSearch(problem):
     To get started, you might want to try some of these simple commands to
     understand the search problem that is being passed in:
     """
-    from game import Directions
-    s = Directions.SOUTH
-    w = Directions.WEST
-    n = Directions.NORTH
-    s = Directions.SOUTH
 
-    print(problem.getStartState())
-    #initializing stack with start state
-    from util import Stack
-    openStack = Stack()    
-    openStack.push(problem.getStartState())
+    #create working stack
+    openStack = util.Stack()
 
-    closedStack = Stack()
+    #create list to track nodes
+    direct = []
     track = []
-    count = 30
-    
-    #while not openStack.isEmpty():
-    while count != 0:
-        x = openStack.pop()
-        print("Current x is now: ", x)
-        track.append(x)
-        print("Track added: ", x)
-        print("Track is currently: ", track)
-        
-        if problem.isGoalState(x):
-            print("SUCCCESSSSSSSSSSSSSSSSSSSSSSSSSSS")
-            break
-        else:
-            successorList = problem.getSuccessors(x)
-            print("SUCCESSOR LIST IS: ", successorList)
+    openStack.push((problem.getStartState(), []))
 
-            for item in successorList:
-                for index in track:
-                    print("item", item)
-                    print("index: ", index)
-                    if(item[0] != index):
-                        successorList.remove(item)
-                        print("to delete: ", item)
-        
-            
-            for moreitems in successorList:
-                print("Children being added: ", moreitems)
-            for items in successorList:
-                openStack.push(items[0])
-                
-        print("\n")
-        print("\n")
-        count -= 1
-        
-    
-    print("Start:", problem.getStartState())
-    print("Is the start a goal?", problem.isGoalState(problem.getStartState()))
-    print("Start's successors:", problem.getSuccessors(problem.getStartState()))
-    return  [s, s, w, s, w, w, s, w]
+    #while loop to iterate through
+    while not openStack.isEmpty():
 
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+        #pop and initialize
+        cNode, direct = openStack.pop()
+
+        #if not visited, append
+        if(cNode not in track):
+            track.append(cNode)
+
+            #check if goal state  
+            if problem.isGoalState(cNode):
+                return direct
+        
+            #iterate through successors and add to the working stack
+            for nNode, currDirect, cost in problem.getSuccessors(cNode):
+                newDirect = direct + [currDirect]
+                openStack.push((nNode, newDirect))
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+
+    #create working queue
+    openQueue = util.Queue()
+
+    #create list to track nodes
+    track = []
+    openQueue.push((problem.getStartState(), []))
+
+    #while loop to iterate through
+    while not openQueue.isEmpty():
+
+        #pop and initialize
+        cNode, direct = openQueue.pop()
+
+        #if not visited, append
+        if(cNode not in track):
+            track.append(cNode)
+
+            #check if goal state  
+            if problem.isGoalState(cNode):
+                return direct
+        
+            #iterate through successors and add to the working queue
+            for nNode, currDirect, cost in problem.getSuccessors(cNode):
+                newDirect = direct + [currDirect]
+                openQueue.push((nNode, newDirect))
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""

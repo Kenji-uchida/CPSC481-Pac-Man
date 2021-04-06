@@ -333,7 +333,7 @@ class CornersProblem(search.SearchProblem):
             nextx, nexty = int(x + dx), int(y + dy)
             hitsWall = self.walls[nextx][nexty]
            
-            #loop through for successor nodes
+            #loop through for successor states
             if not hitsWall:
                successorCorners = list(visitedCorners)
                nNode = (nextx, nexty)

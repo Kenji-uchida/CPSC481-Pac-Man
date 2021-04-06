@@ -1,7 +1,5 @@
-# Pacman State-Space Search
-Pacman State-Space Search is an implementation of the general search algorithms Breadth-First Search (BFS) and Depth-First Search (DFS) in a Pacman scenario. This was written in 
-Python using a Queue for BFS and a Stack for DFS. In fact, the algorithm implementations are the exact same except for the data storage. The purpose of using a Pacman scenario is
-to find paths through a maze and collect the cherries/points. 
+# Pacman Heuristic Search
+Pacman Heuristic Search is an implementation of A* search algorithm and a formulation of a new a problem with a heuristic for it. This was written in Python using a Priority Queue for A* search. The new problem finds the shortest path through the maze that touches all four corners. We implemented the function "aStarSearch" in search.py and implemented the class "CornersProblem" in searchAgents.py. 
 
 ## How to test
 If you run the command: ```python autograder.py``` then you will see the test cases that were wrote to assure the algorithms are written properly. The test cases for BFS and DFS both pass.
@@ -18,9 +16,8 @@ layout.py - Stores layout files and content
 
 The rest of the files can be assumed by their title and looking at the code what they implement
 ```
-
 #### Authors
-Kenji Uchida
-Eric van der Roest
-Jordan Wermuth
+Kenji Uchida,
+Eric van der Roest,
+Jordan Wermuth,
 Tyler Bloom

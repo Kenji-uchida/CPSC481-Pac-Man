@@ -2,7 +2,7 @@
 Pacman Heuristic Search is an implementation of A* search algorithm and a formulation of a new problem with a heuristic for it. This was written in Python using a Priority Queue for A* search. The new problem finds the shortest path through the maze that touches all four corners. We implemented the function "aStarSearch" in search.py and implemented the class "CornersProblem" in searchAgents.py. 
 
 ## How to test
-If you run the command: ```python autograder.py``` then you will see the test cases that were wrote to assure the algorithms are written properly. The test cases for BFS and DFS both pass.
+If you run the command: ```python autograder.py``` then you will see the test cases that were wrote to assure the algorithms are written properly. The test cases for BFS, DFS, & A* all pass.
 
 ### Files
 This project contains a lot of files but most is to display/configure the GUI of the application. A few files to describe:
